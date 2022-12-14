@@ -34,11 +34,4 @@ public class UserController {
         return userRepository.save(u);
     }
 
-    @GetMapping("/user") // quando l'url termina con /books allora esegui questo metodo
-    public String showBooks(Model m) { // il model serve per collegare il controller alla view
-        //Iterable<Book> bs = br.findAll();
-        //m.addAttribute("BOOKS", bs);
-        return "index.html";
-    }
-
 }
