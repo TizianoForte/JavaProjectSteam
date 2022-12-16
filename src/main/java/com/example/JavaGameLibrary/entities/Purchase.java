@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Check;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -20,10 +21,10 @@ public class Purchase {
     private long id;
     @Check(constraints = "price >= 0" )
     private double price;
-    private LocalDate buyDate;
-    @ManyToOne
+    private LocalDateTime buyDate;
+    @ManyToOne(cascade = CascadeType.ALL)
     private Game game;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Account account;
     @OneToOne
     private Feedback feedback;
