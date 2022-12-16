@@ -13,11 +13,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table
-public class User extends Guest {
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nickname;
+    private String email;
     private String name;
     private String surname;
     private LocalDate birthday;

@@ -15,10 +15,10 @@ public class Library {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @OneToMany
+    @ManyToOne
     private Game game;
     @OneToOne
-    private User user;
+    private Account account;
 
 
 }

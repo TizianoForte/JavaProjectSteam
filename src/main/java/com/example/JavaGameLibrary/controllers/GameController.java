@@ -1,7 +1,6 @@
 package com.example.JavaGameLibrary.controllers;
 
 import com.example.JavaGameLibrary.entities.Game;
-import com.example.JavaGameLibrary.entities.User;
 import com.example.JavaGameLibrary.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,18 +18,25 @@ public class GameController {
     public Iterable<Game> getAllGames(@RequestParam(required = false) String titleLike) {
         Iterable<Game> games;
         if(titleLike!=null) {
-
+            games = gameRepository.findByTitleLike("%"+titleLike+"%");
+        } else {
+            games = gameRepository.findAll();
         }
-        return gameRepository.findAll();
+        return games;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Game> getUserByID(@PathVariable long id) {
+    public ResponseEntity<Game> getGameByID(@PathVariable long id) {
         Optional<Game> game = gameRepository.findById(id);
         if(game.isPresent()) {
             return ResponseEntity.ok(game.get());
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping
+    public Game createGame(@RequestBody Game game) {
+        return gameRepository.saveAndFlush(game);
     }
 
 }

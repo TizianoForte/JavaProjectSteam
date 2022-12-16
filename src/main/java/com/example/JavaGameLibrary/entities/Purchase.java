@@ -18,13 +18,13 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Check(constraints = "pricePayed >= 0" )
-    private double pricePayed;
+    @Check(constraints = "price >= 0" )
+    private double price;
     private LocalDate buyDate;
-    @OneToOne
+    @ManyToOne
     private Game game;
-    @OneToOne
-    private User user;
+    @ManyToOne
+    private Account account;
     @OneToOne
     private Feedback feedback;
 }

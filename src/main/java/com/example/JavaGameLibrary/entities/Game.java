@@ -15,7 +15,7 @@ import org.hibernate.annotations.Check;
 @Table
 public class Game {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String title;
     @Check(constraints = "price >= 0" )
